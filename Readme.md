@@ -71,7 +71,7 @@ Lancer l’API avec app.py (FastAPI)
 
 Tester les endpoints (prévoir un client HTTP ou via /docs)
 
-🛠️ Dépendances principales
+### 🛠️ Dépendances principales
 Python ≥ 3.10
 
 numpy, pandas, scikit-learn, tensorflow/keras, torch, matplotlib, opencv-python, fastapi, uvicorn, etc.
