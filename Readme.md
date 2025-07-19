@@ -1,9 +1,9 @@
 # 🍇 Wine-AI
 
-Projet d’analyse, de prédiction et de classification pour la viticulture, combinant **Machine Learning**, **Deep Learning** et une API web avec **FastAPI**.
+Projet d’analyse, de prédiction et de classification pour la viticulture, combinant **Machine Learning**, **Deep Learning** et une API web avec **FastAPI**
 
 ## 📂 Structure du projet
-
+<pre>
 Wine-AI/
 ├── app.py # API FastAPI (serveur)
 ├── debug.ipynb # Notebook d’analyse/soutenance
@@ -14,10 +14,7 @@ Wine-AI/
 ├── Images_web/ # Images diverses (visualisations, outputs)
 ├── requirements.txt # Dépendances Python du projet
 └── ... # (autres fichiers, .gitignore, etc.)
-
-
----
-
+</pre>
 ## 🚀 Lancer l’API (FastAPI)
 
 **1. Installer les dépendances**
@@ -32,10 +29,10 @@ Lancer l’API FastAPI dans l’environnement virtuel
 python app.py
 ou
 uvicorn app:app --reload
+```
 
 
-
-🤖 Fonctionnalités
+## 🤖 Fonctionnalités
 Machine Learning & Deep Learning :
 
 Prédiction et classification de maladies de la vigne
@@ -58,14 +55,14 @@ Gestion des modèles :
 
 Chargement/sauvegarde des modèles entraînés (fichiers dans /Models/)
 
-💾 Données & Images
+## 💾 Données & Images
 Les images du dataset sont incluses dans DL/Grapevine Disease Dataset Original Data/
 
 Autres images (outputs, figures) : Images_web/
 
 Aucun jeu de données privé ou sensible n’est inclus dans le repo public
 
-🧑‍💻 Utilisation typique
+## 🧑‍💻 Utilisation typique
 Entraîner les modèles via les notebooks ou scripts dans /ML et /DL
 
 Sauvegarder les modèles dans /Models
@@ -81,7 +78,7 @@ numpy, pandas, scikit-learn, tensorflow/keras, torch, matplotlib, opencv-python,
 
 (voir requirements.txt)
 
-🙌 Contributeurs
+## 🙌 Contributeurs
 Auteur principal : [bim12]
 
 📝 Notes
@@ -91,5 +88,5 @@ Notebooks à jour pour la démo
 
 API testable localement avec les datasets inclus
 
-📄 License
+## 📄 License
 Projet open-source
