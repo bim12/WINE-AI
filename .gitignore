@@ -1,0 +1,48 @@
+# Environnements virtuels Python
+.venv/
+env/
+ENV/
+venv/
+.Python
+
+# Caches Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Checkpoints Jupyter
+.ipynb_checkpoints/
+
+# Fichiers de logs et temporaires
+*.log
+*.tmp
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Systèmes d'exploitation (Windows/Mac)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fichiers/dossiers de config ou perso
+
+
+# Fichiers générés
+*.egg-info/
+dist/
+build/
+# Models/
+Models/DL_best_cnn_multiclass.keras
+
+# ---  Dossiers/fichiers sur GitHub ! ---
+# Models/
+# ML/
+# DL/
+# Images_web/
+# app.py
+# debug.py
+# requirements.txt
+
