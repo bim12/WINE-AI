@@ -1,7 +1,8 @@
 # app.py
 import uvicorn
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile,Request
 from fastapi.responses import JSONResponse
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 from PIL import Image
@@ -18,6 +19,16 @@ app = FastAPI(
     description="API de classification des maladies de la vigne",
     version="1.0"
 )
+# Ajoute un middleware CORS pour permettre les requêtes HTTP depuis n'importe quelle origine 
+# (utile en développement ou avec un front-end externe)
+# En production remplacer allow_origins=["https://monfront-end.app"]
+# Exemple
+# app.add_middleware(
+#    CORSMiddleware,
+#    allow_origins=["https://monfront-end.app"],  # Origine spécifique autorisée
+#    allow_methods=["*"],  # réduire selon les méthodes utilisées : ["GET", "POST"]
+#    allow_headers=["*"]   # ici,spécifier ["Authorization", "Content-Type"]
+#)
 
 app.add_middleware(
     CORSMiddleware,
@@ -35,6 +46,33 @@ def prepare_image(img: Image.Image) -> np.ndarray:
     arr = np.asarray(img, dtype=np.float32)
     arr = preprocess_input(arr)   # <---- CRUCIAL pour EfficientNetB0
     return np.expand_dims(arr, axis=0)  # (1,224,224,3)
+
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    host = request.client.host or "localhost"
+    port = request.url.port or 8000
+    swagger_url = f"http://{host}:{port}/docs"
+
+    html_content = f"""
+    <html>
+        <head>
+            <title>Bienvenue sur l'API 🍇</title>
+            <style>
+                body {{font-family: Arial, sans-serif;background-color: #f6f8fa;color: #333;margin: 40px;}}
+                h2 {{color: #7a0e36;}}
+                a {{color: #007acc;text-decoration: none;font-weight: bold;}}
+                a:hover {{text-decoration: underline;}}
+                p {{font-size: 18px;}}
+            </style>
+        </head>
+        <body>
+            <h2>Bienvenue sur l'API de classification des maladies de la vigne 🍷</h2>
+            <p>✅ Vous êtes bien sur <strong>{host}:{port}</strong></p>
+            <p>👉 Pour accéder à l'interface <strong>Swagger</strong>, <a href="{swagger_url}">cliquez ici</a>.</p>
+        </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content)
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
